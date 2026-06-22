@@ -631,11 +631,7 @@ footer{background:var(--bg-dark);color:var(--bg);padding:clamp(70px,9vw,110px) 0
 
   /* ---- Lenis + GSAP ---- */
   if(typeof Lenis !== 'undefined' && !reduced){
-    var lenis = new Lenis({
-      duration: 1.15,
-      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); },
-      smoothWheel: true
-    });
+    var lenis = new Lenis({lerp:0.2, wheelMultiplier:1, smoothWheel:true, syncTouch:false});
     if(typeof gsap !== 'undefined' && gsap.ticker){
       gsap.ticker.add(function(time){ lenis.raf(time*1000); });
       gsap.ticker.lagSmoothing(0);
